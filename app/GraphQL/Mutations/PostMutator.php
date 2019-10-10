@@ -40,4 +40,14 @@ class PostMutator
         $post->category()->sync([$args['category_id']]);
         return $post;
     }
+
+    public function delete($rootValue, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
+    {
+        $post = Post::findOrFail($args['id']);
+        if ($post) {
+            $post->category()->detach;
+            $post->delete();
+            return Post::all();
+        }
+    }
 }

@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        \Nuwave\Lighthouse\Tracing\TracingServiceProvider::class,
         /*
          * Application Service Providers...
          */

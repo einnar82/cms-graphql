@@ -20,7 +20,9 @@ class PostMutator
      */
     public function create($rootValue, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
-        return Post::create($args);
+        $post = Post::create($args);
+        $post->category()->attach($args['category_id']);
+        return $post;
     }
 
     /**

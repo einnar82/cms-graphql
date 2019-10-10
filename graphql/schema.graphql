@@ -8,11 +8,14 @@ type Query {
     users: [User!]! @paginate(defaultCount: 10)
     user(id: ID @eq): User @find
     post(id: ID!): Post @field(resolver: "PostQuery")
+    posts: [Post!]! @all
+    
 }
 
 type Mutation {
-    create_post(title: String!, content: String!): Post @field(resolver: "PostMutator@create")
+    create_post(title: String!, content: String!, category_id: ID!): Post @field(resolver: "PostMutator@create")
     update_post(id: ID!, title: String!, content: String!): Post @field(resolver: "PostMutator@update")
+    create_category(name: String!): Category @field(resolver: "CategoryMutator@create")
 }
 
 type User {
@@ -30,4 +33,14 @@ type Post {
     created_at: DateTime!
     updated_at: DateTime!
     deleted_at: DateTime!
+    category: [Category!]! @belongsToMany
 }  
+
+type Category {
+    id: ID!
+    name: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+    deleted_at: DateTime!
+    post: [Post!]! @belongsToMany
+}

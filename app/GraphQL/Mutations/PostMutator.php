@@ -36,6 +36,8 @@ class PostMutator
      */
     public function update($rootValue, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
-        return tap(Post::findOrFail($args['id']))->update($args);
+        $post = tap(Post::findOrFail($args['id']))->update($args);
+        $post->category()->sync([$args['category_id']]);
+        return $post;
     }
 }

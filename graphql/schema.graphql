@@ -14,7 +14,7 @@ type Query {
 
 type Mutation {
     create_post(title: String!, content: String!, category_id: ID!): Post @field(resolver: "PostMutator@create")
-    update_post(id: ID!, title: String!, content: String!): Post @field(resolver: "PostMutator@update")
+    update_post(id: ID!, title: String!, content: String!, category_id: ID!): Post @field(resolver: "PostMutator@update")
     create_category(name: String!): Category @field(resolver: "CategoryMutator@create")
 }
 

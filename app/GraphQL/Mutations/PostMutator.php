@@ -45,7 +45,7 @@ class PostMutator
     {
         $post = Post::findOrFail($args['id']);
         if ($post) {
-            $post->category()->detach;
+            $post->category()->detach();
             $post->delete();
             return Post::all();
         }

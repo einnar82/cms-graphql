@@ -9,6 +9,8 @@ type Query {
     user(id: ID @eq): User @find
     post(id: ID!): Post @field(resolver: "PostQuery")
     posts: [Post!]! @all
+    category(id: ID @eq): Category @find
+    categories: [Category!]! @all
     
 }
 

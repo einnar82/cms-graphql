@@ -14,7 +14,7 @@ class AddContentsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->json('contents')->nullable();
+            $table->longText('contents')->nullable();
         });
     }
 

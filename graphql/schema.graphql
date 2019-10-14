@@ -20,6 +20,7 @@ type Mutation {
     delete_post(id: ID!): Subscription @field(resolver: "PostMutator@delete")
     create_category(name: String!): Category @field(resolver: "CategoryMutator@create")
     update_category(id: ID!, name: String!): Category @field(resolver: "CategoryMutator@update")
+    delete_category(id: ID!): Category @delete
 }
 
 type User {

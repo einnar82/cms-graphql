@@ -21,4 +21,9 @@ class CategoryMutator
     {
        return Category::create($args);
     }
+
+    public function update($rootValue, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
+    {
+       return tap(Category::findOrFail($args['id']))->update($args);
+    }
 }
